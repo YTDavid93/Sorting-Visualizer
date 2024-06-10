@@ -8,8 +8,7 @@
 // If two adjacent elements are not in order, swap them and add one to the swap
 // counter
 
-function main() {
-  const arr = [5, 2, 1, 3, 6, 4];
+function bubbleSort(arr) {
   const n = arr.length;
 
   for (let i = 0; i < n; i++) {
@@ -22,11 +21,13 @@ function main() {
       }
     }
   }
-
-  for (let i = 0; i < n; i ++)
-    {
-        console.log("Sorted array:", i, arr[i]);
-    }
+  return arr;
 }
 
-main();
+function main() {
+  let arr = [64, 34, 25, 12, 22, 11, 90];
+  const sortedArray = bubbleSort(arr);
+  console.log(sortedArray);
+}
+
+main()
