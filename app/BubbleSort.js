@@ -10,7 +10,7 @@
 
 // function to generate randomArray
 function generateRandomArray() {
-  const randomArray = Array.from({ length: 10 }, () =>
+  const randomArray = Array.from({ length: 4 }, () =>
     Math.floor(Math.random() * 100)
   );
   const arrayContainer = document.getElementById("array-container");
