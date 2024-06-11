@@ -1,0 +1,15 @@
+
+#array-container
+{
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.array-bar {
+     display: inline-block;
+      width: 18px;
+      margin: 2px;
+      background: cyan;
+}
