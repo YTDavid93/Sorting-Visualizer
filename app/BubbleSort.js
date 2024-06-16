@@ -9,8 +9,8 @@
 // counter
 
 // function to generate randomArray
-function generateRandomArray() {
-  const randomArray = Array.from({ length: 4 }, () =>
+const generateRandomArray = (size) => {
+  const randomArray = Array.from({ length: size }, () =>
     Math.floor(Math.random() * 100)
   );
   const arrayContainer = document.getElementById("array-container");
@@ -19,17 +19,19 @@ function generateRandomArray() {
 
   randomArray.forEach((value, index) => {
     const bar = document.createElement("div");
-    bar.classList.add("array-bar");
+    bar.classList.add(`array-bar`);
+    bar.classList.add(`bar${index}`);
     bar.style.height = `${value * 3}px`;
     arrayContainer.appendChild(bar);
   });
 
   return randomArray;
-}
+};
 
-function bubbleSort(arr) {
+const bubbleSort = (arr) => {
   const steps = []; // to store the state of the array after each swap
   const n = arr.length;
+  const bars = document.querySelectorAll(".array-bar");
 
   for (let i = 0; i < n; i++) {
     console.log("In i loop");
@@ -46,13 +48,13 @@ function bubbleSort(arr) {
     }
   }
   return steps;
-}
+};
 
-function sleep(ms) {
+const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
+};
 
-async function visualizeBubbleSort(array, bars) {
+const visualizeBubbleSort = async (array, bars, delay) => {
   const steps = bubbleSort(array);
 
   for (const step of steps) {
@@ -60,30 +62,48 @@ async function visualizeBubbleSort(array, bars) {
       bars[i].style.height = `${step[i] * 3}px`;
       bars[i].style.background = "blue";
     }
-    await sleep(500); // Wait for 500 milliseconds before the next step
+    await sleep(delay);
   }
 
   // after storing is complete, set all bars to green
   for (let i = 0; i < bars.length; i++) {
     bars[i].style.background = "green";
   }
-}
+};
 
-function main() {
-  let unsortedArray = generateRandomArray();
+const main = () => {
+  const arraySize = document.getElementById("arr_size");
+  const arraySpeed = document.getElementById("speed_input");
+
+  let unSortedArray = generateRandomArray(parseInt(arraySize.value));
   let bars = document.querySelectorAll(".array-bar");
 
-  const sortButton = document.querySelector(".sort-button");
-  sortButton.addEventListener("click", () => {
-    visualizeBubbleSort(unsortedArray, bars);
+  // let user choose their array size
+  arraySize.addEventListener("input", () => {
+    unSortedArray = generateRandomArray(parseInt(arraySize.value));
+    bars = document.querySelectorAll(".array-bar"); // update the bars
   });
 
-  const arrayBtn = document.querySelector(".new-array");
-  arrayBtn.addEventListener("click", () => {
-     unsortedArray = generateRandomArray();
-     console.log(unsortedArray);
-     bars = document.querySelectorAll(".array-bar");
+  // let user to increase their speed of sorting algorithm
+  let delay = 260;
+  arraySpeed.addEventListener("input", () => {
+    console.log(arraySpeed.value, typeof arraySpeed.value);
+    delay = 320 - parseInt(arraySpeed.value);
   });
-}
+
+  // sorts the unsortedarray
+  const sortBtn = document.querySelector(".sort-button");
+  sortBtn.addEventListener("click", () => {
+    visualizeBubbleSort(unSortedArray, bars, delay);
+  });
+
+  // generates random arrays every time new array button is clicked
+  const arrBtn = document.querySelector(".new-array");
+  arrBtn.addEventListener("click", () => {
+    unSortedArray = generateRandomArray(parseInt(arraySize.value));
+    bars = document.querySelectorAll(".array-bar"); // update the bars
+  });
+
+};
 
 main();
