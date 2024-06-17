@@ -59,7 +59,13 @@ const main = () => {
   // sorts the unsortedarray selectionsort
   const selecSortBtn = document.querySelector(".selec-button");
   selecSortBtn.addEventListener("click", () => {
-     visualizeSelectionSort(unSortedArray, bars, delay)
+     visualizeSelectionSort(unSortedArray, bars, delay);
+  })
+
+  // sorts the unsortedarray InsertionSort
+  const inserSortBtn = document.querySelector(".insert-button");
+  inserSortBtn.addEventListener("click", () => {
+    visualizeInsertionSort(unSortedArray, bars, delay);
   })
 
   // generates random arrays every time new array button is clicked
