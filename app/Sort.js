@@ -68,6 +68,12 @@ const main = () => {
     visualizeInsertionSort(unSortedArray, bars, delay);
   })
 
+  //sorts the unsortedArray Merge Sort
+  const mergeSortBtn = document.querySelector(".merge-button");
+  mergeSortBtn.addEventListener("click", () => {
+     visualizeMergeSort(unSortedArray, bars, delay);
+  })
+
   // generates random arrays every time new array button is clicked
   const arrBtn = document.querySelector(".new-array");
   arrBtn.addEventListener("click", () => {

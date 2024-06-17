@@ -34,6 +34,7 @@ const selectionSort = (arr) => {
 const visualizeSelectionSort = async (array, bars, delay) =>
 {
   const steps = selectionSort(array);
+  console.log("selection sort", steps)
 
   for (const step of steps) {
     for (let i = 0; i < bars.length; i++) {
