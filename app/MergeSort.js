@@ -4,7 +4,6 @@
 // // Sort the right half of the array (assuming n > 1)
 // // Merge the two halves together
 
-
 // Merge Sort implementation with steps recording
 const mergeSort = (arr, steps = []) => {
   let n = arr.length;
@@ -27,7 +26,13 @@ const mergeSort = (arr, steps = []) => {
 
   const mergedArray = merge(sortLeft, sortRight);
 
-  steps.push([...mergedArray]);
+  steps.push({
+    array: [...mergedArray],
+    left: [...leftHalf],
+    right: [...rightHalf],
+    sortedLeft: [...sortLeft],
+    sortedRight: [...sortRight],
+  });
 
   return mergedArray;
 };
@@ -63,16 +68,57 @@ const merge = (leftHalf, rightHalf) => {
 // Function to visualize Merge Sort
 const visualizeMergeSort = async (array, bars, delay) => {
   const steps = [];
-  mergeSort(array, steps);
+  mergeSort(array.slice(), steps);
 
-  for (const step of steps) {
-    for (let i = 0; i < bars.length; i++) {
-      bars[i].style.height = `${step[i] * 3}px`;
-      bars[i].style.backgroundColor = "blue";
+  for (let i = 0; i < steps.length; i++) {
+    const {
+      array: mergeSortArray,
+      left,
+      right,
+      sortedLeft,
+      sortedRight,
+    } = steps[i];
+
+    // Reset all bars to default color
+    for (let k = 0; k < bars.length; k++) {
+      bars[k].style.backgroundColor = "cyan";
+    }
+
+    // Highlight the Divide Phase
+    for (let k = 0; k < bars.length; k++) {
+      if (left.includes(mergeSortArray[k])) {
+        bars[k].style.backgroundColor = "blue";
+      } else if (right.includes(mergeSortArray[k])) {
+        bars[k].style.backgroundColor = "red";
+      }
     }
     await sleep(delay);
+
+    // Highlight the Conquer Phase (sorted subarrays)
+    for (let k = 0; k < bars.length; k++) {
+      if (
+        sortedLeft.includes(mergeSortArray[k]) ||
+        sortedRight.includes(mergeSortArray[k])
+      ) {
+        bars[k].style.height = `${mergeSortArray[k] * 3}px`;
+        bars[k].style.backgroundColor = "yellow";
+      }
+    }
+    await sleep(delay);
+
+    // Highlight Combine Phase (merging sorted subarrays)
+    if (i < steps.length - 1) {
+      const nextArray = steps[i + 1].array;
+      for (let k = 0; k < bars.length; k++) {
+        if (mergeSortArray[k] !== nextArray[k]) {
+          bars[k].style.backgroundColor = "orange";
+        }
+      }
+      await sleep(delay);
+    }
   }
 
+  // Set final sorted array to green
   for (let i = 0; i < bars.length; i++) {
     bars[i].style.backgroundColor = "green";
   }
