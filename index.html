@@ -12,16 +12,30 @@
     <title>Sorting Visualizer</title>
   </head>
   <body>
+    <header class="header">
+      <div class="header__main">
+        <h1>Sorting Visualizer</h1>
+      </div>
+      <div class="header__button">
+        <button class="new-array">New Array</button>
+        <button class="sort-button">Bubble Sort</button>
+        <button class="selec-button">Selection Sort</button>
+        <button class="insert-button">Insertion Sort</button>
+        <button class="merge-button">Merge Sort</button>
+      </div>
+    </header>
     <div id="array-container"></div>
-    <button class="sort-button">Bubble Sort</button>
-    <button class="selec-button">Selection Sort</button>
-    <button class="insert-button">Insertion Sort</button>
-    <button class="merge-button">Merge Sort</button>
-    <button class="new-array">New Array</button>
     <div class="col">
       <span id="size">
         Size
-        <input id="arr_size" type="range" min="5" max="100" step="1" value="60" />
+        <input
+          id="arr_size"
+          type="range"
+          min="5"
+          max="100"
+          step="1"
+          value="60"
+        />
       </span>
       <span id="speed">
         Speed
