@@ -79,11 +79,6 @@ const visualizeMergeSort = async (array, bars, delay) => {
       sortedRight,
     } = steps[i];
 
-    console.log("sorted helf half", sortedLeft);
-    console.log("sorted right half", sortedRight);
-    // console.log("merging section", mergeSortArray);
-    // console.log("indexes");
-
     // Reset all bars to default color
     for (let k = 0; k < bars.length; k++) {
       bars[k].style.backgroundColor = "cyan";
@@ -100,40 +95,30 @@ const visualizeMergeSort = async (array, bars, delay) => {
     await sleep(delay);
 
     // Highlight the Conquer Phase (sorted subarrays)
-    // for (let k = 0; k < bars.length; k++) {
-    //   if (sortedLeft.includes(array[k]) || sortedRight.includes(array[k])) {
-    //     bars[k].style.height = `${mergeSortArray[k] * 3}px`;
-    //     console.log(bars[k].style.backgroundColor = "yellow");
-    //   }
-    // }
-    // await sleep(delay);
-
-    // Highlight the Conqueer Phase (sorted subarrays)
-    for (let k = 0; k < bars.length; k++)
-      {
-        if(sortedLeft.includes(mergeSortArray[k]))
-          {
-             console.log(k, mergeSortArray)
-             console.log(bars[k].style.backgroundColor = "yellow");
-          }
+    for (let k = 0; k < bars.length; k++) {
+      if (sortedLeft.includes(array[k]) || sortedRight.includes(array[k])) {
+        bars[k].style.height = `${mergeSortArray[k] * 3}px`;
+        console.log(bars[k].style.backgroundColor = "yellow");
       }
+    }
+    await sleep(delay);
 
     // Highlight Combine Phase (merging sorted subarrays)
-    // if (i < steps.length - 1) {
-    //   const nextArray = steps[i + 1].array;
-    //   for (let k = 0; k < bars.length; k++) {
-    //     if (mergeSortArray[k] !== nextArray[k]) {
-    //       bars[k].style.backgroundColor = "orange";
-    //     }
-    //   }
-    //   await sleep(delay);
-    // }
+    if (i < steps.length - 1) {
+      const nextArray = steps[i + 1].array;
+      for (let k = 0; k < bars.length; k++) {
+        if (mergeSortArray[k] !== nextArray[k]) {
+          bars[k].style.backgroundColor = "orange";
+        }
+      }
+      await sleep(delay);
+    }
   }
 
   // Set final sorted array to green
-  // for (let i = 0; i < bars.length; i++) {
-  //   bars[i].style.backgroundColor = "green";
-  // }
+  for (let i = 0; i < bars.length; i++) {
+    bars[i].style.backgroundColor = "green";
+  }
 };
 
 
