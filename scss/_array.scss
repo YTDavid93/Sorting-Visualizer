@@ -1,0 +1,14 @@
+.array {
+  margin-top: 20px;
+
+  #array-container {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+  }
+  .array-bar {
+    width: 10px;
+    margin: 2px;
+    background: cyan;
+  }
+}

@@ -1,0 +1,51 @@
+.header {
+  padding: 1.75rem 0px;
+  &__main {
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      line-height: 2.5rem;
+      color: $white;
+      margin-bottom: 1.25rem;
+    }
+  }
+
+
+  &__button {
+    margin-top: 20px;
+  }
+
+  &__button1 {
+    button {
+      transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+      &:hover {
+        box-shadow: 0 0 40px 40px $red inset;
+      }
+    }
+  }
+
+  &__button2 {
+    button {
+      border-color: $blue;
+      color: $white;
+      box-shadow: 0 0 40px 40px $blue inset, 0 0 0 0 $blue;
+      transition: all 150ms ease-in-out;
+      padding: 1.5rem 1rem;
+
+      &:not(:last-child)
+      {
+        margin-right: 10px;
+      }
+
+      &:hover {
+        box-shadow: 0 0 10px 0 $blue inset, 0 0 10px 4px $blue;
+      }
+    }
+  }
+
+  &__range {
+    font-size: 1rem;
+    row-gap: 10px;
+    color: $white;
+  }
+}
