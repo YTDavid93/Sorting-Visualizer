@@ -29,6 +29,41 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+// disable Button function
+const disableSortingBtns = () => {
+  document.querySelector(".sort-button").disabled = true;
+  document.querySelector(".selec-button").disabled = true;
+  document.querySelector(".insert-button").disabled = true;
+  document.querySelector(".merge-button").disabled = true;
+};
+
+// enable button function
+const enableSortingBtns = () => {
+  document.querySelector(".sort-button").disabled = false;
+  document.querySelector(".selec-button").disabled = false;
+  document.querySelector(".insert-button").disabled = false;
+  document.querySelector(".merge-button").disabled = false;
+};
+
+// disable size slider
+const disableSizeSlider = () => {
+  document.getElementById("arr_size").disabled = true;
+};
+
+// enable size slider
+const enableSizeSlider = () => {
+  document.getElementById("arr_size").disabled = false;
+};
+
+//disable new array btn
+const enableArrBtn = () => {
+  document.querySelector(".new-array").disabled = false;
+};
+
+// enable array btn
+const disableArrBtn = () => {
+  document.querySelector(".new-array").disabled = true;
+};
 
 const main = () => {
   const arraySize = document.getElementById("arr_size");
@@ -39,8 +74,10 @@ const main = () => {
 
   // let user choose their array size
   arraySize.addEventListener("input", () => {
+    // disableSizeSlider();
     unSortedArray = generateRandomArray(parseInt(arraySize.value));
     bars = document.querySelectorAll(".array-bar"); // update the bars
+    // enableSizeSlider();
   });
 
   // let user to increase their speed of sorting algorithm
@@ -52,27 +89,51 @@ const main = () => {
 
   // sorts the unsortedarray bubblesort
   const sortBtn = document.querySelector(".sort-button");
-  sortBtn.addEventListener("click", () => {
-    visualizeBubbleSort(unSortedArray, bars, delay);
+  sortBtn.addEventListener("click", async () => {
+    disableSortingBtns();
+    disableSizeSlider();
+    disableArrBtn();
+    await visualizeBubbleSort(unSortedArray, bars, delay);
+    enableSortingBtns();
+    enableSizeSlider();
+    enableArrBtn();
   });
 
   // sorts the unsortedarray selectionsort
   const selecSortBtn = document.querySelector(".selec-button");
-  selecSortBtn.addEventListener("click", () => {
-     visualizeSelectionSort(unSortedArray, bars, delay);
-  })
+  selecSortBtn.addEventListener("click", async () => {
+    disableSortingBtns();
+    disableSizeSlider();
+    disableArrBtn();
+    await visualizeSelectionSort(unSortedArray, bars, delay);
+    enableSortingBtns();
+    enableSizeSlider();
+    enableArrBtn();
+  });
 
   // sorts the unsortedarray InsertionSort
   const inserSortBtn = document.querySelector(".insert-button");
-  inserSortBtn.addEventListener("click", () => {
-    visualizeInsertionSort(unSortedArray, bars, delay);
-  })
+  inserSortBtn.addEventListener("click", async () => {
+    disableSortingBtns();
+    disableSizeSlider();
+    disableArrBtn();
+    await visualizeInsertionSort(unSortedArray, bars, delay);
+    enableSortingBtns();
+    enableSizeSlider();
+    enableArrBtn();
+  });
 
   //sorts the unsortedArray Merge Sort
   const mergeSortBtn = document.querySelector(".merge-button");
-  mergeSortBtn.addEventListener("click", () => {
-     visualizeMergeSort(unSortedArray, bars, delay);
-  })
+  mergeSortBtn.addEventListener("click", async () => {
+    disableSortingBtns();
+    disableSizeSlider();
+    disableArrBtn();
+    await visualizeMergeSort(unSortedArray, bars, delay);
+    enableSortingBtns();
+    enableSizeSlider();
+    enableArrBtn();
+  });
 
   // generates random arrays every time new array button is clicked
   const arrBtn = document.querySelector(".new-array");
@@ -83,4 +144,3 @@ const main = () => {
 };
 
 main();
-

@@ -52,4 +52,6 @@ const visualizeBubbleSort = async (array, bars, delay) => {
   for (let i = 0; i < bars.length; i++) {
     bars[i].style.background = "green";
   }
+
+  return Promise.resolve();
 };

@@ -20,6 +20,7 @@ const insertionSort = (arr) => {
     steps.push({array: [...arr], comparison: null, swap: [j+1, i]}); // for visualization swap takes place
   }
   return steps;
+
 };
 
 const visualizeInsertionSort = async (arr, bars, delay) => {
@@ -54,4 +55,6 @@ const visualizeInsertionSort = async (arr, bars, delay) => {
   for (let i = 0; i < bars.length; i++) {
     bars[i].style.background = "green";
   }
+
+  return Promise.resolve();
 };
