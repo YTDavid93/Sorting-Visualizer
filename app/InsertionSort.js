@@ -28,7 +28,6 @@ const visualizeInsertionSort = async (arr, bars, delay) => {
 
   for (const step of steps) {
     const { array: insertionSortArray, comparison, swap} = step;
-    console.log(insertionSortArray)
     for (let i = 0; i < bars.length; i++) {
 
       // reset all the bars of default color 
@@ -37,13 +36,11 @@ const visualizeInsertionSort = async (arr, bars, delay) => {
       if (comparison && comparison.includes(i))
         {
           bars[i].style.background = "blue";
-          console.log("comparison takes place")
         }
 
       if (swap && swap.includes(i))
         {
           bars[i].style.background = "yellow";
-          console.log("swap takes place")
         }
 
       bars[i].style.height = `${insertionSortArray[i] * 3}px`;

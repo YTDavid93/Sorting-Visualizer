@@ -98,7 +98,7 @@ const visualizeMergeSort = async (array, bars, delay) => {
     for (let k = 0; k < bars.length; k++) {
       if (sortedLeft.includes(array[k]) || sortedRight.includes(array[k])) {
         bars[k].style.height = `${mergeSortArray[k] * 3}px`;
-        console.log(bars[k].style.backgroundColor = "yellow");
+        bars[k].style.backgroundColor = "yellow";
       }
     }
     await sleep(delay);

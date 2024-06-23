@@ -39,22 +39,18 @@ const visualizeSelectionSort = async (array, bars, delay) => {
     for (let i = 0; i < bars.length; i++) {
       // Highlight the minimum index
       if (previousMinIndex !== null && previousMinIndex !== minIndex) {
-        console.log("previousMinIndex")
         bars[previousMinIndex].style.background = ""; // Reset previous minindex color
       }
       // lets try to highlight the minumum index at first how will you approach this problem
       if (minIndex === i) {
-        console.log("minIndex")
         bars[i].style.background = "blue";
       }
 
       if (comparison && comparison.includes(i)) {
-        console.log("comparison")
         bars[i].style.background = "yellow";
       }
 
       if (swap && (i === swap[0] || i === swap[1])) {
-        console.log("swap")
         bars[i].style.background = "red"; // Highlight elements being swapped
       }
 
@@ -68,7 +64,6 @@ const visualizeSelectionSort = async (array, bars, delay) => {
     // Reset comparison and swap highlights
     for (let i = 0; i < bars.length; i++) {
       if (!swap || (i !== swap[0] && i !== swap[1])) {
-        console.log("reset")
         bars[i].style.background = "";
       }
     }

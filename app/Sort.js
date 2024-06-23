@@ -83,7 +83,6 @@ const main = () => {
   // let user to increase their speed of sorting algorithm
   let delay = 260;
   arraySpeed.addEventListener("input", () => {
-    console.log(arraySpeed.value, typeof arraySpeed.value);
     delay = 320 - parseInt(arraySpeed.value);
   });
 
